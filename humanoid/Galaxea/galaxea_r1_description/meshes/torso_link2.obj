@@ -1,6 +1,6 @@
 # Blender 4.4.3
 # www.blender.org
-mtllib torso_link2.mtl
+mtllib materials.mtl
 o torso_link2
 v 0.062500 0.075500 0.045496
 v -0.058482 0.075500 0.001463
