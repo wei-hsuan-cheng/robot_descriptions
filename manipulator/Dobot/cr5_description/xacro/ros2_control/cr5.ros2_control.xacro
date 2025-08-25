@@ -2,7 +2,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="cr5_system" params="name ros2_control_hardware_type">
 
-    <ros2_control name="${name}" type="system">
+    <xacro:property name="prefix" value="${name + '_' if name else ''}"/>
+
+    <ros2_control name="${prefix}cr5System" type="system">
       <hardware>
         <xacro:if value="${ros2_control_hardware_type == 'gz'}">
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
@@ -27,7 +29,7 @@
       </hardware>
 
       <!-- 关节接口定义 -->
-      <joint name="joint1">
+      <joint name="${prefix}joint1">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">0</param>
@@ -36,7 +38,7 @@
         <state_interface name="effort"/>
       </joint>
 
-      <joint name="joint2">
+      <joint name="${prefix}joint2">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">0</param>
@@ -45,7 +47,7 @@
         <state_interface name="effort"/>
       </joint>
 
-      <joint name="joint3">
+      <joint name="${prefix}joint3">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">-1.5708</param>
@@ -54,7 +56,7 @@
         <state_interface name="effort"/>
       </joint>
 
-      <joint name="joint4">
+      <joint name="${prefix}joint4">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">0</param>
@@ -63,7 +65,7 @@
         <state_interface name="effort"/>
       </joint>
 
-      <joint name="joint5">
+      <joint name="${prefix}joint5">
         <command_interface name="position"/>
         <state_interface name="position">
           <param name="initial_value">1.5708</param>
@@ -72,7 +74,7 @@
         <state_interface name="effort"/>
       </joint>
 
-      <joint name="joint6">
+      <joint name="${prefix}joint6">
         <command_interface name="position"/>
         <state_interface name="position"/>
         <state_interface name="velocity"/>
